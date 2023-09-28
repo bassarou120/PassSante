@@ -1,0 +1,160 @@
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+{% form_theme form 'widget/fields_mousso_horizontal.html.twig' %}
+{% import 'GestionBundle:Macros:html.html.twig' as _html %}
+{% from 'GestionBundle:Macros:macro.html.twig' import analyses, consultation_affections, medicaments, allergie_traitement, info_patient,  fonctionnels, physiques, signes, constante, antecedent_personnel, antecedent_familial, antecedent %}
+{% block stylesheets %}
+    {{ parent() }}
+     {{ form_stylesheet(form) }}
+     <style>
+        .box-footer {border: 1px solid #fff !important;}
+        .box-footer .box {box-shadow: none;}
+
+        .image-clignote  {
+            animation-duration: 1s;
+            animation-name: clignoter;
+            animation-iteration-count: infinite;
+            transition: none;
+        }
+
+        @keyframes clignoter {
+            0%   { color:#000000; }
+            /* 40%   {color:#F1A200; } */
+            50%   { background-color: rgba(255, 186, 36, 0.8);}
+            100% { opacity:#000000; }
+        }
+
+     </style>
+{% endblock %}
+{% block page_content %}
+{% set domain = 'consultation' %}
+<div class="row" xmlns="http://www.w3.org/1999/html">
+
+        <section class="col-md-3 connectedSortable">
+           {{ info_patient(patient, true, true, true) }}
+        </section>
+
+        <section class="col-md-9">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li><a href="{{ path ('admin_consultation_cancer_liste',{'id': patient.id}) }}">{{ _html.text('Historique de consultations', domain) }}</a></li>
+                    <li class="active"><a href="{{ path ('admin_consultation_new',{'id': patient.id}) }}">{{ _html.text('Nouvelle consultation', domain) }}</a></li>
+                </ul>
+                <div class="tab-content">
+
+                    <div class="active tab-pane" id="nouvelle">
+                        {{ form_errors(form) }}
+                        <!-- general form elements -->
+                        {{ form_start(form, { 'attr': {'class': 'form-horizontal', 'novalidate': 'novalidate'} }) }}
+                        <div class="">
+                             <div class="box-footer">
+                                <div class="col-md-12 ">
+                                    <div class="box-header with-border">
+                                        <div type="button" class="pull-left titre">{{ _html.text('Consultation cancer', domain) }}</div>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-12" for="">
+                                                        Date 1ère consultation : 
+                                                        {# <span class="red">*</span> #}
+                                                    </label>
+
+                                                    <div class="col-md-12">
+                                                    {{ form_widget(form.datePremiereConsultation) }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-12" for="">
+                                                        Site de la tumeur
+                                                        {# <span class="red">*</span> #}
+                                                    </label>
+
+                                                    <div class="col-md-12">
+                                                    {{ form_widget(form.typeCancer) }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-12" for="">
+                                                        Stade initial: 
+                                                        {# <span class="red">*</span> #}
+                                                    </label>
+
+                                                    <div class="col-md-12">
+                                                    {{ form_widget(form.stade) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="box-body">
+                                        <div class="row">
+                                             <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-12" for="">
+                                                        Évolution actuelle
+                                                        {# <span class="red">*</span> #}
+                                                    </label>
+                                                    <div class="col-md-12">
+                                                    {{ form_widget(form.evolution) }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-12" for="">
+                                                        Stratégie Traitement
+                                                        {# <span class="red">*</span> #}
+                                                    </label>
+                                                    <div class="col-md-12">
+                                                    {{ form_widget(form.strategieTraitement) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-footer">
+                                <div class="box-header with-border">
+                                    <div type="button" class="pull-left titre">RDV</div>
+                                </div>
+                                <div class="box-body">
+                                    {{ form_row_inline(form.rdv.libRendezVous) }}
+                                    {{ form_row_inline(form.rdv.dateRendezVous) }}
+                                </div>
+                            </div>
+                            <div class="box-footer">
+                                {{ form_widget(form.submit,{'attr':{'class':'btn btn-primary'}}) }}
+                            </div>
+                            {{ form_widget(form._token) }}
+                            {{ form_end(form, {render_rest: false}) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('bundles/gestion/js/consultation-cancer.js') }}"></script>
+{% endblock %}
+
+{% block javascripts_inline %}
+    {{ parent() }}
+    {{ form_javascript(form) }}
+    <script>
+    init_date_picker('#{{ form.datePremiereConsultation.vars.id }}');
+    init_select2('.select2');
+
+    </script>
+{% endblock %}
+
+{% block page_title %}
+    Consultation cancer CNRAO :: Création
+{% endblock %}
+
+{% block page_subtitle %}
+{% endblock %}
+

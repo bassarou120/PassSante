@@ -1,0 +1,34 @@
+{% form_theme form ':widget:fields-santemousso.html.twig' %}
+{#{% block contact -%}#}
+    <h2>Contactez-nous</h2>
+    {% for type, flash_messages in app.session.flashBag.all %}
+        {% for flash_message in flash_messages %}
+            {% if type in ['warning', 'success'] %}
+                <div class="alert alert-{{ type }}">
+                    {{ flash_message }}
+                </div>
+            {% endif %}
+        {% endfor %}
+                                    
+    {% endfor %}
+    <form action="{{ path('site_contact') }}" method="post" {{ form_enctype(form) }} class="blogger">
+        {#<!--{{ form_errors(form) }}-->#}
+        <span class="input input--hoshi modal__popup--hoshi" id="named">
+            {{ form_row(form.nom) }}
+        </span>
+        <span class="input input--hoshi modal__popup--hoshi" id="emailing">
+            {{ form_row(form.email) }}
+        </span>
+        <span class="input input--hoshi modal__popup--hoshi" id="modal-panel-1">
+            {{ form_row(form.sujet) }}
+        </span>
+        <span class="input input--hoshi modal__popup--hoshi" id="message">
+            {{ form_row(form.message) }}
+        </span>
+
+        {{ form_rest(form) }}
+
+        <input type="submit" value="Envoyer" />
+    </form>
+{#
+{% endblock %}#}

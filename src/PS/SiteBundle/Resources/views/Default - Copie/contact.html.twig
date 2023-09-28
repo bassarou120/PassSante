@@ -1,0 +1,31 @@
+{% extends 'ParametreBundle::index.html.twig' %}
+{% block content %}
+<div id="contenu">
+	<section id="presentation" class="presentation">
+		<div class="row">
+			<div class="large-12 columns">
+				<header>
+					<h1>Formulaire de contact</h1>
+				</header>
+				{% for flashMessage in app.session.flashbag.get('notice') %}
+						<div class="flash-notice">
+							{{ flashMessage }}
+						</div>
+				{% endfor %}				
+				<form action="{{ path('site_contact') }}" method="post" {{ form_enctype(form) }} class="blogger">
+					{{ form_errors(form) }}
+			
+					{{ form_row(form.name) }}
+					{{ form_row(form.email) }}
+					{{ form_row(form.subject) }}
+					{{ form_row(form.body) }}
+			
+					{{ form_rest(form) }}
+			
+					<input type="submit" value="Envoyer" />
+				</form>
+			</div>
+		</div>                    
+	</section>
+</div>
+{% endblock %}

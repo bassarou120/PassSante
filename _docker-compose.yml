@@ -1,0 +1,46 @@
+version: "3.8"
+services:
+  # Mysql database container
+  db:
+    image: mysql
+    container_name: pass_sante_db_symfony
+    restart: always
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    networks:
+      - pass_sante
+
+  # phpmyadmin container
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: pass_sante_phpmyadmin
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 8081:80
+    environment:
+      PMA_HOST: db
+    networks:
+      - pass_sante
+
+  # Symfony apache project container
+  www:
+    build: ./
+    container_name: pass_sante_symfony
+    ports:
+      - "8741:80"
+    volumes:
+      - ./docker/php/vhosts:/etc/apache2/sites-enabled
+      - ./:/var/www
+    restart: always
+    networks:
+      - pass_sante
+
+networks:
+  pass_sante:
+
+volumes:
+  db-data:

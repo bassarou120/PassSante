@@ -1,0 +1,57 @@
+{% extends '::index.html.twig' %}
+{% block content %}
+    <section id="home" class="" data-type="background" data-speed="10">
+        <nav>
+            <div>
+                <a href="{{ path('parametre_homepage') }}">
+                    <img src="{{ asset('bundles/parametre/image/small/_psm_w.png') }}" height="50px" width="auto"  alt="">
+                </a>
+            </div>
+
+            <ul>
+                <li>
+                    <a herf="{{ path('parametre_homepage') }}#home">accueil</a>
+                </li>
+
+                <li>
+                    <a herf="{{ path('parametre_homepage') }}#about-us">pass santé</a>
+                </li>
+
+                <li>
+                    <a herf="{{ path('parametre_homepage') }}#contact">contact</a>
+                </li>
+                {% include "UtilisateurBundle::connexion.html.twig" %}
+            </ul>
+        </nav>
+
+    </section>
+
+    <section id="about-us" class="" style="">
+        <div class="about-contain">
+            {% block sub_content %}
+            {% endblock %}
+        </div>
+    </section>
+
+    <section id="footer" class="contact-leaf leaf-signed" data-type="background" data-speed="40">
+        <div class="contact-contain">
+            <h4>
+                <ul class="santemousso-panel">
+                    <li>
+							<span class="flaticon-facebook-logo-button" target="_blank">
+								<a href="www.facebook.com/profil"></a>
+							</span>
+                    </li>
+                    <li>
+							<span class="flaticon-twitter-logo-button" target="_blank">
+								<a href="www.twitter.com/profil"></a>
+							</span>
+                    </li>
+                </ul>
+                <p>copyright Pass Santé 2017   <a>FAQ</a>    <a>Mentions légales</a></p>
+            </h4>
+            <!--</div>-->
+        </div>
+    </section>
+
+{% endblock %}

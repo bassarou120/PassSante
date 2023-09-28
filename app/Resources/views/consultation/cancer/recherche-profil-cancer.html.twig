@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<!--
+Author: Keenthemes
+Product Name: Metronic - Bootstrap 5 HTML, VueJS, React, Angular & Laravel Admin Dashboard Theme
+Purchase: https://1.envato.market/EA4JP
+Website: http://www.keenthemes.com
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Dribbble: www.dribbble.com/keenthemes
+Like: www.facebook.com/keenthemes
+License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
+-->
+<html lang="en">
+	<!--begin::Head-->
+	<head><base href="../../../">
+		<title>Profile médical | CNRAO</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:type" content="article" />
+		<meta property="og:title" content="Metronic - Bootstrap 5 HTML, VueJS, React, Angular &amp; Laravel Admin Dashboard Theme" />
+		<meta property="og:url" content="https://keenthemes.com/metronic" />
+		<meta property="og:site_name" content="Keenthemes | Metronic" />
+		<link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
+        <link rel="shortcut Icon" href="/favicon.ico?v3" type="image/x-icon" />
+		<!--begin::Fonts-->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+		<!--end::Fonts-->
+		<!--begin::Global Stylesheets Bundle(used by all pages)-->
+         <link href="{{ asset('bundles/site/v3/plugins.bundle.css')}}" rel="stylesheet" />
+         <link href="{{ asset('bundles/site/v3/style.bundle.css')}}" rel="stylesheet" />
+		<!--end::Global Stylesheets Bundle-->
+	</head>
+	<!--end::Head-->
+	<!--begin::Body-->
+	<body id="kt_body" class="bg-body">
+		<!--begin::Main-->
+		<!--begin::Root-->
+		<div class="d-flex flex-column flex-root">
+			<!--begin::Authentication - Sign-in -->
+			<div class="d-flex flex-column flex-lg-row flex-column-fluid">
+				<!--begin::Aside-->
+				<div class="d-flex flex-column flex-lg-row-auto w-xl-600px positon-xl-relative" style="background-color: #F2C98A">
+					<!--begin::Wrapper-->
+					<div class="d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y">
+						<!--begin::Content-->
+						<div class="d-flex flex-row-fluid flex-column text-center p-10 pt-lg-20">
+							<!--begin::Logo-->
+							<a href="" class="py-9 mb-5">
+								<img alt="Logo" src="{{ asset('bundles/site/v3/logocnrao.jpeg')}}" class="h-60px" />
+							</a>
+							<!--end::Logo-->
+							<!--begin::Title-->
+							<h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #986923;">Bienvenue à PSM-CNRAO</h1>
+							<!--end::Title-->
+							<!--begin::Description-->
+							<p class="fw-bold fs-2" style="color: #986923;">Découvrez PSM
+                            avec d'excellents outils 
+							<br />de gestion patient</p>
+							<!--end::Description-->
+						</div>
+						<!--end::Content-->
+						<!--begin::Illustration-->
+						<div class="d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-350px" style="background-image: url({{ asset('bundles/site/v3/13.png')}}"></div>
+						<!--end::Illustration-->
+					</div>
+					<!--end::Wrapper-->
+				</div>
+				<!--end::Aside-->
+				<!--begin::Body-->
+				<div class="d-flex flex-column flex-lg-row-fluid py-10">
+					<!--begin::Content-->
+					<div class="d-flex flex-center flex-column flex-column-fluid">
+						<!--begin::Wrapper-->
+						<div class="w-lg-500px p-10 p-lg-15 mx-auto">
+							<!--begin::Form-->
+                            {{ form_start(form, {attr: {id: "profil-form", class: "form w-100", novalidate:"novalidate"}}) }}
+								<!--begin::Heading-->
+								<div class="text-center mb-10">
+									<!--begin::Title-->
+									<h1 class="text-dark mb-3">
+                                    Profile carnet médical patient CNRAO
+                                    </h1>
+                                    <div class="alert alert-info">
+
+                                <span class="fa fa-info-circle"></span> 
+                                L'ID et le PIN sont visibles en retournant votre bracelet
+                                </div>
+									<!--end::Title-->
+									<!--begin::Link-->
+									<div class="text-gray-400 fw-bold fs-4">
+                                        {% if error %}
+                                            <span class="link-danger fw-bolder">
+                                            {{ error | raw }}
+                                            </span>
+                                        {% endif %}
+                                    </div>
+								</div>
+								<!--begin::Heading-->
+								<!--begin::Input group-->
+								<div class="fv-row mb-3">
+                                    {{ form_widget(form.identifiant, { attr: {class:"form-control form-control-lg form-control-solid", autocomplete:"off" ,placeholder:"Entrez votre ID",} }) 
+                                    }}
+								</div>
+								<div class="fv-row mb-3">
+                                    {{ form_row(form.pin, { attr: { class:"form-control form-control-lg form-control-solid", autocomplete:"off", required:"required", placeholder:"Entrez votre PIN"} }) 
+                                    }}
+								</div>
+								<div class="fv-row mb-6">
+                                    {{ form_widget(form.contact, { attr:{class:"form-control form-control-lg form-control-solid", autocomplete:"off",  placeholder:"N° de téléphone", label:false} }) 
+                                    }}
+								</div>
+								{# <div class="fv-row mb-3">
+                                    {{ form_row(form.localisation, { attr:{ type:"hidden", class:"hide form-control form-control-lg form-control-solid", autocomplete:"off", placeholder:"N° de téléphone", label:false} }) 
+                                    }}
+								</div> #}
+								<!--end::Input group-->
+								<!--begin::Actions-->
+								<div class="text-center">
+									<!--begin::Submit button-->
+									<button type="submit" id="kt_sign_in_submit" class="btn btn-lg btn-primary w-100 mb-5" name="_submit">
+										<span class="indicator-label">Valider</span>
+									</button>
+								</div>
+								<!--end::Actions-->
+							 {{ form_end(form, {render_rest: false}) }}
+							<!--end::Form-->
+						</div>
+						<!--end::Wrapper-->
+					</div>
+					<!--end::Content-->
+					<!--begin::Footer-->
+					<div class="d-flex flex-center flex-wrap fs-6 p-5 pb-0">
+						<!--begin::Links-->
+						<div class="d-flex flex-center fw-bold fs-6">
+							<a href="" class="text-muted text-hover-primary px-2" target="_blank">About</a>
+							<a href="" class="text-muted text-hover-primary px-2" target="_blank">Support</a>
+							<a href="" class="text-muted text-hover-primary px-2" target="_blank">Purchase</a>
+						</div>
+						<!--end::Links-->
+					</div>
+					<!--end::Footer-->
+				</div>
+				<!--end::Body-->
+			</div>
+			<!--end::Authentication - Sign-in-->
+		</div>
+		<!--end::Root-->
+		<!--end::Main-->
+		<!--begin::Javascript-->
+		<script>var hostUrl = "assets/";</script>
+		<!--begin::Global Javascript Bundle(used by all pages)-->
+         {# <script src="{{ asset('bundles/site/plugins.bundle.js')}}"></script>
+         <script src="{{ asset('bundles/site/scripts.bundle.js')}}"></script>
+         <script src="{{ asset('bundles/site/general.js')}}"></script> #}
+	</body>
+	<!--end::Body-->
+</html>

@@ -1,0 +1,67 @@
+{% extends 'ParametreBundle::index.html.twig' %}
+{% block content %}
+			<div class="slider-wrapper theme-default banner">
+				<div id="banner">
+					<img src="{{ asset('bundles/parametre/images/Banner_cover.jpg') }}" width="100%" alt="" />
+				</div>
+			</div>
+			
+			<div id="contenu">
+				<section id="presentation" class="">
+					<div class="row">
+						<div class="large-12 columns">
+							{#<h3><span class="fa fa-navicon MR8"></span>Bienvenue sur SANTE MOUSSO</h3>#}
+							<p class="text-center">
+								Votre profil médical qui est immédiatement disponible à tout moment, partout.
+							</p>
+						</div>
+					</div>                    
+					<div class="row">
+						<div class="large-5 columns">
+							<div class="row collapse has-form">
+								<form action="{{ path('patient_profil') }}" method="post" {{ form_enctype(form) }} id="patient_profil" class=" collapse  has-form">
+									<div class="large-8 columns">    
+										{{ form_widget(form) }}
+									</div>
+									<div class="large-4 columns">
+										<input type="submit" class="button expand" value="Profil" />
+									</div>
+								</form>
+
+								{#<div class="large-8 columns">
+									<input type="text" placeholder="Identifiant..." name="Identifiant" id="Identifiant" value="">
+								</div>
+								<div class="large-4 columns">
+									<a href="{{ path("patient_afficher" , {'id':1}) }}" class="button expand">Carnet</a>
+								</div>#}
+							</div>
+						</div>
+						<div class="large-2 columns">
+							<p class="text-center">ou</p>
+						</div>
+						<div class="large-5 columns">
+							<p class="text-center"><a href="{{ path("fos_user_registration_register") }}" class="button expand">Créez-vous un compte</a> </p>
+						</div>
+					</div>
+				</section>
+				<section id="prestation" class="prestation">
+					<div class="row">
+						<div class="large-4 columns text-center panel">
+							<span class="fa fa-terminal fa-5x"></span>
+							<h5>Rapidit&eacute;</h5>
+							<p>Les premiers intervenants peuvent accéder à votre profil en un rien de temps pour une prise en charge rapide. Nous aidons les secours à gagner du temps.</p>
+						</div>
+						<div class="large-4 columns text-center panel">
+							<span class="fa fa-sellsy fa-5x"></span>
+							<h5>Efficacit&eacute;</h5>
+							<p>Secourir les personnes dont les antécédents médicaux sont à connaître en cas d’urgence ou encore des patients jugés "à risque" (souffrant d’Alzheimer, de diabète, d’Asthme, de problèmes cardiaques ou qui ont récemment été hospitalisés). Avoir son dossier médical sur soi avec nos bijoux connectés  pour une meilleure en charge.</p>
+						</div>
+						<div class="large-4 columns text-center panel">
+							<span class="fa fa-connectdevelop fa-5x"></span>
+							<h5>Disponibilit&eacute;</h5>
+							<p>Notre plate-forme un profil médical complet, immédiatement disponible à tout moment et partout 24h sur 24h, 7 jours sur 7. </p>
+						</div>
+					</div>                    
+				</section>
+			</div>
+{% endblock %}

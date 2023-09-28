@@ -1,0 +1,99 @@
+<div class="box-footer">
+    <div class="box box-solid ">
+        <div class="box-header bg-light-blue-gradient">
+            <!-- tools box -->
+            <div class=" box-tools">
+                <button type="button" class="btn btn-primary btn-sm pull-right"
+                        data-widget="collapse"
+                        data-toggle="tooltip" style="margin-right: 5px;">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+            <!-- /. tools -->
+
+            <i class="fa fa-flash"></i>
+
+            <h3 class="box-title">
+                {{ 'Information Patient Cancer CNRAO' | trans({}) }}
+            </h3>
+        </div>
+        
+       <div class="row">
+            <div class="col-md-6 barre-right mb-3">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label">Numero Dossier CNRAO <span class="text-danger">*</span></label>
+                        <div class="col-sm-6">
+                            {{ form_widget(edit_form.fichePatientCancer.numeroDossier) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label">Site de la tumeur <span class="text-danger">*</span></label>
+                        <div class="col-sm-6">
+                            {{ form_widget(edit_form.fichePatientCancer.typeCancer) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label">Traitement(s) <span class="text-danger">*</span></label>
+                        <div class="col-sm-6">
+                            {{ form_widget(edit_form.fichePatientCancer.typeTraitement) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            {% if edit_form.fichePatientCancer.statutTraitement is defined %}
+                                {{ form_widget(edit_form.fichePatientCancer.statutTraitement) }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                    <label class="col-sm-6 control-label">Date dernière séance</label>
+                        <div class="col-sm-6">
+                            {{ form_widget(edit_form.fichePatientCancer.derniereSeance) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Médecin Traitant CNRAO <span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+                            {{ form_widget(edit_form.fichePatientCancer.medecinTraitant) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Contact du médecin <span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+                            {{ form_widget(edit_form.fichePatientCancer.contactMedecin) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Stratégie de traitement <span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+                            {{ form_widget(edit_form.fichePatientCancer.strategieTraitement) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label"> Autre <span class="text-danger"> ( Veuillez preciser )</span></label>
+                        <div class="col-sm-7">
+                            {{ form_widget(edit_form.fichePatientCancer.autreStrategie) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        // you may need to change this code if you are not using Bootstrap Datepicker
+        $('.js-datepicker').datepicker({
+            //format: 'dd-mm-yyyy'
+        });
+    });
+</script>

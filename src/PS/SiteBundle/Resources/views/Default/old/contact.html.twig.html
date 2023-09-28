@@ -1,0 +1,16 @@
+{% form_theme form ':widget:fields-santemousso.html.twig' %}
+{% block contact -%}
+    <h2>Contact Us</h2>
+    <form action="{{ path('site_contact') }}" method="post" {{ form_enctype(form) }} class="blogger">
+        <!--{{ form_errors(form) }}-->
+
+        {{ form_row(form_contact.name) }}
+        {{ form_row(form_contact.email) }}
+        {{ form_row(form_contact.subject) }}
+        {{ form_row(form_contact.body) }}
+
+        {{ form_rest(form_contact) }}
+
+        <input type="submit" value="Envoyer" />
+    </form>
+{% endblock %}

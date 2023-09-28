@@ -1,0 +1,237 @@
+<!-- Top Bar-->
+
+{% from 'SiteBundle:Default:macro.html.twig' import form_id_pin %}
+
+<div class="top">
+
+    <div class="row">
+
+        <div class="container">
+
+            {{ form_id_pin(form, lang, true) }}
+
+            <div class="col-md-3 col-xs-12">
+
+                <div class="logo">
+
+                    <a href="index.html"><img alt="" src="{{ asset('bundles/site/v3/images/logo.png')}}"></a>
+
+                </div>
+
+            </div>
+
+            
+
+            <div class="col-md-9 col-xs-12">
+
+                <ul class="nav nav-pills pull-right">
+
+                    {% if not app.user %}
+
+                    <li class=""> <a href="{{ path("fos_user_security_login") }}" class="btn btn-sm btn-new"><i
+
+                                class="fa fa-user"></i> {{ 'home.menu.login' | trans }}</a>
+
+                    </li>
+{#}
+                    <li> <a href="{{ path("fos_user_registration_register") }}" class="btn btn-sm btn-default"><i
+
+                                class="fa fa-pencil"></i> {{ 'home.menu.register' | trans }} </a>
+
+                    </li>#}
+
+                    {% else %}
+{#}
+                    <li> <a href="{{ path("fos_user_registration_register") }}" class="btn btn-sm btn-default"><i
+
+                                class="fa fa-pencil"></i> {{ 'home.menu.account' | trans }} </a>
+                    </li>
+#}
+                    <li class=""> <a href="{{ path("psm_logout") }}" class="btn btn-sm btn-new"><i
+
+                                class="fa fa-user"></i> {{ 'home.menu.logout' | trans }}</a>
+
+                    </li>
+
+                    {% endif %}
+                    <li> <a href="http://play.google.com/store/apps/details?id=com.mcm.psm" class="btn btn-sm" 
+                    style="background-color:rgb(17, 150, 17);color:#fff"><i
+
+                                class="fa fa-google-play"></i> PSM APP </a></li>
+
+                    <li> 
+                    <a id="js-pharmagarde" href="https://www.abidjan.net/sante/pharmacies/"
+
+                            class="btn btn-sm btn-default image-clignote ">
+
+                            <i class=" fa fa-medkit" aria-hidden="true"></i>
+
+                            {{ 'home.menu.pharmacie_garde' | trans }}</a>
+
+                    </li>
+
+                    <li>
+
+                        {% set lang = app.request.locale|default('FR') %}
+
+                        {% set langs = ['fr', 'en', 'es'] %}
+
+                        <a href="#" class="btn btn-sm btn-default" id="btnLang" data-toggle="dropdown"
+
+                            aria-haspopup="true" aria-expanded="false" role="button"><i class="fa fa-globe"></i>
+
+                            {{ lang }} <span class="caret"></span></a>
+
+
+
+                        <ul class="dropdown-menu dropdown-lang" aria-labelledby="btnLang">
+
+                            {% for _lang in langs %}
+
+                            <li><a href="{{ path('homepage', {_locale: _lang}) }}"
+
+                                    style="display:block;padding:5px 10px" {% if lang == _lang %}class="active"
+
+                                    {% endif %}>{{ _lang }}</a></li>
+
+                            {% endfor %}
+
+                        </ul>
+
+                    </li>
+
+                    <!-- <li> <a id="js-pharmagarde" href="{{ path('homepage') }}" class="btn btn-sm btn-default ">
+
+                            <i class=" fa fa-medkit" aria-hidden="true"></i> Devenir Partenaire </a>
+
+                    </li> -->
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- End of Top Bar-->
+
+
+
+<!-- Main Menu -->
+
+<div class="main_menu">
+
+    <div class="row">
+
+        <div class="container">
+
+            <div class="col-sm-8">
+
+                <nav id="desktop-menu">
+
+                    <ul class="sf-menu" id="navigation">
+
+                        <li class="current"> <a href="{{ path('homepage') }}#">{{ 'home.menu.home' | trans }}</a>
+
+                        </li>
+
+                        <li> <a href="#">{{ 'home.menu.pass' | trans }}</a>
+
+                            <ul>
+
+                                <li>
+
+                                    <a href="{{ path('homepage') }}">{{ 'home.menu.presentation' | trans }}</a>
+
+                                </li>
+
+                                <li>
+
+                                    <a href="{{ path('homepage') }}">{{ 'home.menu.hiw' | trans }}</a>
+
+                                </li>
+
+                                <li>
+
+                                    <a class="js-scrollTo"
+
+                                        href="#section-parteners">{{ 'home.menu.partners' | trans }}</a>
+
+                                </li>
+
+                                <li>
+
+                                    <a href="{{ path('site_distrib') }}">{{ 'home.menu.distrib' | trans }}</a>
+
+                                </li>
+
+                            </ul>
+
+                        </li>
+
+                        <li>
+
+                            <a class="js-scrollTo" href="#contact-section">{{ 'home.menu.contact' | trans }}</a>
+
+                        </li>
+
+                        <li> <a href="#">COVID-19 <span class="down-badge-color-2 main-badge">Urgence</span>
+
+                            </a>
+
+                            <ul>
+
+                                {#<li>
+
+                                    <a href="{{ path('gestion_questionnairedepistage_donnee', {id: 6}) }}">{{ 'home.menu.surveillance' | trans }}
+
+                                    </a>
+
+                                </li>#}
+
+                                <li>
+
+                                    <a href="{{ path('home_sensibilisation') }}">{{ 'home.menu.sensibilisation' | trans }}
+
+                                    </a>
+
+                                </li>
+
+                            </ul>
+
+                        </li>
+
+                        <li> <a href="https://blog.pass-sante.net/">Le Blog PSM</a>
+
+                        </li>
+
+                        <li> <a href="{{ path('site_faq') }}">FAQ</a> 
+
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+            </div>
+
+
+
+            <div class="col-sm-12 col-md-4 form-id-block-wrapper">
+
+               {{ form_id_pin(form, lang) }}
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- End of Main Menu -->
