@@ -1,23 +1,24 @@
-FROM ubuntu:16.04
-ADD . /app
-RUN apt-get update
-RUN apt-get install -y php apache2 libapache2-mod-php7.0 php-mysql php-intl git git-core curl php-curl php-xml composer zip unzip php-zip
-# Configure Apache
-RUN rm -rf /var/www/* \
-    && a2enmod rewrite \
-    && echo "ServerName localhost" >> /etc/apache2/apache2.conf
-ADD vhost.conf /etc/apache2/sites-available/000-default.conf
-# Install Symfony
-RUN mkdir -p /usr/local/bin
-RUN curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony
-RUN chmod a+x /usr/local/bin/symfony
-# Add main start script for when image launches
-ADD run.sh /run.sh
-RUN chmod 0755 /run.sh
-WORKDIR /app
-EXPOSE 80
-CMD ["/run.sh"]
+FROM php:7.4-apache
 
+RUN a2enmod rewrite
+
+RUN apt-get update \
+  && apt-get install -y libzip-dev git unzip Q-wget --no-install-recommends \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN docker-php-ext-install pdo mysqli pdo_mysql zip;
+
+RUN wget https://getcomposer.org/download/2.0.9/composer.phar \
+    && mv composer.phar /usr/bin/composer && chmod +x /usr/bin/composer
+
+COPY docker/apache.conf /etc/apache2/sites-enabled/000-default.conf
+COPY . /var/www
+
+WORKDIR /var/www
+EXPOSE 80
+
+CMD ["apache2-foreground"]
 
 #
 #FROM php:7.2-apache
