@@ -16,7 +16,7 @@ COPY apache.conf /etc/apache2/sites-enabled/000-default.conf
 COPY . /var/www
 
 
-RUN unzip vendor.zip
+#RUN unzip vendor.zip
 
 WORKDIR /var/www
 EXPOSE 80
