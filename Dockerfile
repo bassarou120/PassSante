@@ -14,14 +14,16 @@ RUN docker-php-ext-install pdo mysqli pdo_mysql zip;
 
 COPY apache.conf /etc/apache2/sites-enabled/000-default.conf
 COPY . /var/www
-RUN chmod -R 777 app/cache
-RUN chmod -R 777 app/logs
+
 
 
 
 #RUN unzip vendor.zip
 
 WORKDIR /var/www
+
+RUN chmod -R 777 app/cache
+RUN chmod -R 777 app/logs
 EXPOSE 80
 
 CMD ["apache2-foreground"]
