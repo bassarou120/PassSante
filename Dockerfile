@@ -1,4 +1,4 @@
-FROM php:7.2-apache
+FROM php:7.4-apache
 
 RUN a2enmod rewrite
 
@@ -9,11 +9,14 @@ RUN apt-get update \
 
 RUN docker-php-ext-install pdo mysqli pdo_mysql zip;
 
-RUN wget https://getcomposer.org/download/2.0.9/composer.phar \
-    && mv composer.phar /usr/bin/composer && chmod +x /usr/bin/composer
+#RUN wget https://getcomposer.org/download/2.0.9/composer.phar \
+#    && mv composer.phar /usr/bin/composer && chmod +x /usr/bin/composer
 
 COPY apache.conf /etc/apache2/sites-enabled/000-default.conf
 COPY . /var/www
+RUN chmod -R 777 cache
+RUN chmod -R 777 logs
+
 
 
 #RUN unzip vendor.zip
@@ -128,12 +131,12 @@ CMD ["apache2-foreground"]
 #RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
 #
 ##upload
-#RUN echo "file_uploads = On\n" \
-#         "memory_limit = 500M\n" \
-#         "upload_max_filesize = 500M\n" \
-#         "post_max_size = 500M\n" \
-#         "max_execution_time = 600\n" \
-#         > /usr/local/etc/php/conf.d/uploads.ini
+#    RUN echo "file_uploads = On\n" \
+#             "memory_limit = 500M\n" \
+#             "upload_max_filesize = 500M\n" \
+#             "post_max_size = 500M\n" \
+#             "max_execution_time = 600\n" \
+#             > /usr/local/etc/php/conf.d/uploads.ini
 #
 ##USER app
 #
