@@ -39,3 +39,8 @@ e3ffe0,::1,GET,https://localhost/PassSante/web/app_dev.php/_fragment?_path=_form
 8d5f2f,::1,GET,https://localhost/PassSante/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Dfr%26_controller%3DSiteBundle%253ADefault%253Amenu,1695889634,7675bd,200
 955012,::1,GET,https://localhost/PassSante/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Dfr%26_controller%3DSiteBundle%253ADefault%253Acontact,1695889635,7675bd,200
 7675bd,::1,GET,https://localhost/PassSante/web/app_dev.php/,1695889635,,200
+3e6146,::1,GET,https://localhost/PassSante/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Dfr%26_controller%3DSiteBundle%253ADefault%253Amenu,1696121314,bc0c73,200
+9c9ebc,::1,GET,https://localhost/PassSante/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Dfr%26_controller%3DSiteBundle%253ADefault%253Acontact,1696121315,bc0c73,200
+bc0c73,::1,GET,https://localhost/PassSante/web/app_dev.php/,1696121315,,200
+6eaec6,::1,GET,https://localhost/PassSante/web/app_dev.php/profil/?pin=-1,1696121337,9d0a69,500
+9d0a69,::1,POST,https://localhost/PassSante/web/app_dev.php/profil/?pin=-1,1696121337,,500
